@@ -25,11 +25,12 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
 import toast from 'react-hot-toast'
+import config from '../utils/api'
 
 
 
 const getAllEmployees = async () => {
-    const res = await fetch('http://localhost:3000/api/employees/getAllEmployees', {
+    const res = await fetch(`${config.apiUrl}/api/employees/getAllEmployees`, {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json',
@@ -43,7 +44,7 @@ const getAllEmployees = async () => {
 }
 
 const deleteEmployee = async (id) => {
-    const res = await fetch(`http://localhost:3000/api/employees/deleteEmployee/${id}`, {
+    const res = await fetch(`${config.apiUrl}/api/employees/deleteEmployee/${id}`, {
         method: 'DELETE',
         headers: {
             'Content-Type': 'application/json',
@@ -56,7 +57,7 @@ const deleteEmployee = async (id) => {
 }
 
 const editEmployee = async (employee) => {
-    const res = await fetch(`http://localhost:3000/api/employees/updateEmployee/${employee.id}`, {
+    const res = await fetch(`${config.apiUrl}/api/employees/updateEmployee/${employee.id}`, {
         method: 'PUT',
         headers: {
             'Content-Type': 'application/json',

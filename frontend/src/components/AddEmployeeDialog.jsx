@@ -15,6 +15,7 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { useMutation, useQueryClient } from '@tanstack/react-query'
 import toast from 'react-hot-toast'
+import config from '../utils/api'
 
 export default function AddEmployeeDialog() {
 
@@ -28,7 +29,7 @@ export default function AddEmployeeDialog() {
     const queryClient = useQueryClient()
 
     const addEmployee = async (userData) => {
-        const res = await fetch('http://localhost:3000/api/employees/addEmployee', {
+        const res = await fetch(`${config.apiUrl}/api/employees/addEmployee`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(userData)
