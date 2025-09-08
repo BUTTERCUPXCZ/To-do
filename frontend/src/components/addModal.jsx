@@ -11,10 +11,11 @@ import {
 } from '../components/ui/dialog'
 import { useMutation } from '@tanstack/react-query';
 import toast from 'react-hot-toast';
+import config from '../utils/api';
 
 
 const addEmployee = async (userData) => {
-    const res = await fetch('http://localhost:3000/api/employees/addEmplyoee', {
+    const res = await fetch(`${config.apiUrl}/api/employees/addEmployee`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(userData)

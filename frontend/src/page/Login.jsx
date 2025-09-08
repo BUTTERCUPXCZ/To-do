@@ -8,12 +8,11 @@ import { Link, useNavigate } from 'react-router-dom'
 import toast from 'react-hot-toast'
 import { useMutation } from '@tanstack/react-query'
 import { useAuth } from '../context/AuthContext'
+import config from '../utils/api'
 
-
-const BASE_URL = import.meta.env.MODE === 'production' ? "http://localhost:3000" : "";
 
 const loginUser = async (userData) => {
-    const res = await fetch(`${BASE_URL}/api/employees/login`, {
+    const res = await fetch(`${config.apiUrl}/api/employees/login`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(userData)

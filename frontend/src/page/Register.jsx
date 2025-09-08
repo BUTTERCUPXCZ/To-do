@@ -7,11 +7,10 @@ import { Alert, AlertDescription } from "@/components/ui/alert"
 import { Link, useNavigate } from 'react-router-dom'
 import { useMutation } from '@tanstack/react-query'
 import toast from 'react-hot-toast'
-
-const BASE_URL = import.meta.env.MODE === 'production' ? "http://localhost:3000" : "";
+import config from '../utils/api'
 
 const registerUser = async (userData) => {
-    const res = await fetch(`${BASE_URL}/api/employees/register`, {
+    const res = await fetch(`${config.apiUrl}/api/employees/register`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(userData)

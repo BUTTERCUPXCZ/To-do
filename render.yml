@@ -1,0 +1,18 @@
+services:
+  - type: web
+    name: backend
+    env: node
+    rootDir: backend
+    buildCommand: "npm install && npx prisma generate"
+    startCommand: "npm start"
+    envVars:
+      - key: DATABASE_URL
+        sync: false   # set in dashboard manually
+
+  - type: web
+    name: frontend
+    env: node
+    rootDir: frontend
+    buildCommand: "npm install && npm run build"
+    startCommand: "npm run start"
+    staticPublishPath: "dist"   # if Vite, use "dist"; CRA use "build"
